@@ -149,6 +149,30 @@ public class Runner_Streams {
         );
         System.out.println("mapIsim = " + mapIsim);
         System.out.println("mapIsim2 = " + mapIsim2);
+        /**
+         * K,V -> Integer, List<String> -> 3, [Ali,Can,Gul]
+         *                                8          3     5       6        5      5       3      5      5      5        3
+         */
+        listIsim = Stream.of("Muhammet","Ali","Canan","Gulsen","Tekin","Murat","Can","Hakki","Hakan","Demet","Gul");
+        Map<Integer,List<String>> mapListLength = listIsim.collect(
+                Collectors.groupingBy(
+                        String::length
+                )
+        );
+        System.out.println(mapListLength);
+
+        /**
+         *
+         */
+        listIsim = Stream.of("Muhammet","Ali","Canan","Gulsen","Tekin","Murat","Can","Hakki","Hakan","Demet","Gul");
+        TreeMap<Integer,List<String>> treeMApList = listIsim.collect(
+            Collectors.groupingBy(
+                    String::length,
+                    TreeMap::new,
+                    Collectors.toList()
+            )
+        );
+        System.out.println(treeMApList);
 
     }   // Main Method Sonu
 }// Class Sonu
